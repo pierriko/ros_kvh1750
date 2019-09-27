@@ -392,9 +392,7 @@ bool IMU1750::cmd_read()
   bool response = false;
   for(size_t ii = 0; !response && ii < MaxReadAttempts; ++ii)
   {
-    base_read(false);
-
-    if(_buff[_bytes_read - 1] == '\n')
+    if(base_read(false) && _buff[_bytes_read - 1] == '\n')
     {
       response = true;
     }
